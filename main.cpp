@@ -11,8 +11,8 @@
 
 
 int main() {
-
-    vector<Current> accounts;
+    cout<<"\t\t\t***********************************THE BANKING APP**********************************************\n";
+    vector<Account *> accounts;
     display_menu(accounts);
 
         

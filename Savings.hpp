@@ -6,8 +6,9 @@
 
 class Savings : public Account
 {
-    friend ostream & operator<< (ostream &COUT, Savings &account);
+//    friend ostream & operator<< (ostream &COUT, Savings &account);
 public:
+    virtual void print(std::ostream &COUT) override;
    void withdraw (double amount) override;
     void deposit (double amount) override;
    void check_balance() override;

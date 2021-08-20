@@ -29,7 +29,11 @@ Savings::~Savings()
     Account::check_balance();   
    }
 
-ostream & operator<< (ostream &COUT, Savings & account){
-    COUT<<"Account owner: "<<account.getname()<<endl;
-    return COUT;
+//ostream & operator<< (ostream &COUT, Savings & account){
+//    COUT<<"Account owner: "<<account.getname()<<endl;
+//    return COUT;
+//}
+
+void Savings::print (std::ostream &COUT){
+    COUT<<"Savings Account owner: "<<getname()<<endl;
 }

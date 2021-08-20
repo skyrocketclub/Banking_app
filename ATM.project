@@ -93,6 +93,8 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
+    <File Name="Printable.cpp"/>
+    <File Name="Printable.hpp"/>
     <File Name="Kids.cpp"/>
     <File Name="Kids.hpp"/>
     <File Name="Current.cpp"/>

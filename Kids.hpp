@@ -11,8 +11,8 @@ class Kids : public Account
 protected:
     std::string g_name {};      //The name of the guardian
 public:
-
-    friend ostream & operator << (ostream & COUT, Kids & account);
+    virtual void print(std::ostream &COUT) override;
+//    friend ostream & operator << (ostream & COUT, Kids & account);
     void withdraw (double amount) override;
     void deposit (double amount) override;
    void check_balance() override;

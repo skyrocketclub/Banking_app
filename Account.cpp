@@ -6,6 +6,14 @@ Account::Account(string name, string password,double balance)
 {
 }
 
+void Account::print (std::ostream &COUT){
+     COUT<<"Main Account: "<<name<<endl;
+}
+
+//std::ostream & operator <<(std::ostream & COUT, Account &account){
+//    COUT<<"Main Account: "<<account.name<<endl;
+//    return COUT;
+//}
  void Account::withdraw (double amount){
      if ( balance - amount >= 0){
      balance-=amount;

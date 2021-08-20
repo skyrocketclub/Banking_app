@@ -2,11 +2,13 @@
 #define ACCOUNT_HPP
 #include <string>
 #include <iostream>
+#include "Printable.hpp"
 
 using namespace std;
 
-class Account
+class Account:public Printable
 {
+//    friend std::ostream & operator <<(std::ostream &COUT, Account &account);
 protected:
     string name;
     double balance;
@@ -18,11 +20,12 @@ public:
     double getbalance();
     
     //I will make this class an abstract class
+    virtual void print(std::ostream &COUT) override;
     virtual void withdraw (double amount) = 0;
     virtual void deposit (double amount) = 0;
     virtual void check_balance() = 0;
     Account(string name = "   ", string password=" ",double balance = 0.0);
-    ~Account();
+    virtual ~Account();
 
 };
 

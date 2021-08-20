@@ -8,7 +8,10 @@ using namespace std;
 class Current :public Account
 {
 public:
-    friend ostream & operator<<(ostream & COUT, Current & account);
+//    friend ostream & operator<<(ostream & COUT, Current & account);
+//        friend ostream & operator<<(ostream & COUT, Current *account);
+        
+    virtual void print(std::ostream &COUT) override;
     void withdraw (double amount) override;
     void deposit (double amount) override;
     void check_balance() override;

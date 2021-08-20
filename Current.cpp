@@ -25,7 +25,11 @@ void Current::check_balance(){
     Account::check_balance();
 }
 
-ostream &operator <<(ostream & COUT, Current & account){
-    COUT<<"Account Owner: "<<account.name<<endl;
-    return COUT;
-}
+//ostream &operator <<(ostream & COUT, Current & account){
+//    COUT<<"Current Account Owner: "<<account.name<<endl;
+//    return COUT;
+//}
+
+void Current::print(std::ostream &COUT) {
+        COUT<<"Current Account Owner: "<<name<<endl;
+ }

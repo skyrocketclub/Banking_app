@@ -9,10 +9,15 @@ Kids::~Kids()
 {
 }
 
-ostream & operator << (ostream & COUT, Kids & account){
-    COUT<< "Account owner: "<<account.getname()<<"\tGuardian: "<<account.g_name<<std::endl;
-    return COUT;
-}
+//ostream & operator << (ostream & COUT, Kids & account){
+//    COUT<< "Account owner: "<<account.getname()<<"\tGuardian: "<<account.g_name<<std::endl;
+//    return COUT;
+//}
+
+void Kids::print(std::ostream &COUT){
+    COUT<< "Kids Account owner: "<<getname()<<"\tGuardian: "<<g_name<<std::endl;
+    }
+    
     void Kids::withdraw (double amount){
         Account::withdraw(amount);
     }
