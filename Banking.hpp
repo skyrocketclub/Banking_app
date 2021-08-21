@@ -6,20 +6,21 @@
 #include "Kids.hpp"
 #include <vector>
 #include <iostream>
+#include <memory>
 
 using namespace std;
 
 //I am making use of base pointers in this project to make polymorphism possible...
-    void display_menu(vector <Account *> &account_list);
-    void open_acc(vector <Account *> &account_list);
-    void access_acc(vector <Account *> &account_list);
+    void display_menu(vector<shared_ptr<Account>> &account_list);
+    void open_acc(vector<shared_ptr<Account>> &account_list);
+    void access_acc(vector<shared_ptr<Account>>&account_list);
     
-    void password_menu(vector <Account *> &account_list,Account *acc);
-    void account_menu(vector <Account *> &account_list,Account *acc);
-    void deposit(vector <Account *> &account_list,Account *acc);
-    void withdraw (vector <Account *> &account_list,Account *acc);
-    void check_bal (vector <Account *> &account_list,Account *acc);
-    void another_transaction(vector <Account *> &account_list, Account *acc);
+    void password_menu(vector<shared_ptr<Account>> &account_list,shared_ptr<Account> acc);
+    void account_menu(vector<shared_ptr<Account>> &account_list,shared_ptr<Account> acc);
+    void deposit(vector<shared_ptr<Account>> &account_list, shared_ptr<Account> acc);
+    void withdraw (vector<shared_ptr<Account>>&account_list,shared_ptr<Account> acc);
+    void check_bal (vector<shared_ptr<Account>>&account_list,shared_ptr<Account> acc);
+    void another_transaction(vector<shared_ptr<Account>>&account_list, shared_ptr<Account> acc);
     bool quit(char &, bool &);
     void account_details();
    

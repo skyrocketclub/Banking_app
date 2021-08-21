@@ -9,7 +9,7 @@
     char option {};
     bool quitted {false};
 
-    void display_menu(vector<Account *> &account_list){
+    void display_menu(vector<shared_ptr<Account>> &account_list){
     if(quitted == false){
         cout<<"1. Open a New Account\n2. Access an account\n3. Quit\nOption: ";
         cin>>option;
@@ -43,7 +43,7 @@
          }
 }
     
-void open_acc(vector <Account *> &account_list){
+void open_acc(vector<shared_ptr<Account>> &account_list){
     string name {};
     string password {};
     string g_name{};
@@ -61,7 +61,8 @@ void open_acc(vector <Account *> &account_list){
                 cout<<"Password: ";
                 cin>>password;
             //    Current current (name,password);
-                Account *current = new Current(name, password);
+            shared_ptr <Account> current = make_shared <Current>(name, password);
+//                Account *current = new Current(name, password);
                 account_list.push_back(current);
                 cout<<"Account successfully added!"<<endl;
         }
@@ -73,7 +74,8 @@ void open_acc(vector <Account *> &account_list){
                 cout<<"Password: ";
                 cin>>password;
             //    Current current (name,password);
-                Account *savings = new Savings (name, password);
+//                Account *savings = new Savings (name, password);
+              shared_ptr<Account> savings = make_shared <Savings> (name, password);
                 account_list.push_back(savings);
                 cout<<"Savings Account successfully added!"<<endl;
         }
@@ -89,7 +91,8 @@ void open_acc(vector <Account *> &account_list){
                 cout<<"Initial Deposit: N ";
                 cin>>deposit_init;
             //    Current current (name,password);
-                Account *kids = new Kids(name, password,deposit_init, g_name);
+//                Account *kids = new Kids(name, password,deposit_init, g_name);
+                shared_ptr<Account> kids = make_shared<Kids>(name, password, deposit_init, g_name);
                 account_list.push_back(kids);
                cout<<"Kids Account successfully added!"<<endl;
         }
@@ -111,11 +114,11 @@ void open_acc(vector <Account *> &account_list){
  * You can then deposit, withdraw, or check the balance and even you can transfer some money from your account to another user of the same type  of account.
  * NAMASTE
  * */
-void access_acc(vector <Account *> &account_list){
+void access_acc(vector<shared_ptr<Account>> &account_list){
     cout<<"Choose an account to access: "<<endl;
     size_t i {1};
     size_t a_option {};
-    for(auto acc : account_list){
+    for(auto &acc : account_list){
         cout<<i<<" . ";
         cout<<*acc;
         i++;
@@ -123,13 +126,13 @@ void access_acc(vector <Account *> &account_list){
     cout<<"Account Number: ";
     cin>>a_option;
     size_t holder {a_option -1};
-    password_menu(account_list,account_list.at(holder));
+    password_menu(account_list, account_list.at(holder));
     display_menu(account_list);
 }
 
 
 
-void password_menu(vector <Account *> &account_list,Account  *acc){
+void password_menu(vector<shared_ptr<Account>> &account_list,shared_ptr<Account> acc){
     string password {};
     int chance {0};
     system("CLS");
@@ -158,7 +161,7 @@ void password_menu(vector <Account *> &account_list,Account  *acc){
 }
 
 
-void account_menu(vector <Account *> &account_list,Account  *acc){
+void account_menu(vector<shared_ptr<Account>> &account_list,shared_ptr<Account> acc){
       system("CLS");
       char a_choice {};
       cout<<"What transaction would you like to carry out today? \n";
@@ -190,13 +193,13 @@ void account_menu(vector <Account *> &account_list,Account  *acc){
       }
 }
 
-void check_bal (vector <Account *> &account_list, Account  *acc){
+void check_bal (vector<shared_ptr<Account>> &account_list,shared_ptr<Account> acc){
     acc->check_balance();
 //    display_menu(account_list);
     another_transaction(account_list,acc);
 }
 
-void withdraw (vector <Account *> &account_list, Account  *acc){
+void withdraw (vector<shared_ptr<Account>> &account_list,shared_ptr<Account> acc){
     double amount {0.0};
     cout<<"How much would you like to withdraw?: "<<endl;
     cin>>amount;
@@ -205,7 +208,7 @@ void withdraw (vector <Account *> &account_list, Account  *acc){
     another_transaction(account_list,acc);
 }
 
-void deposit (vector <Account *> &account_list, Account  *acc){
+void deposit (vector<shared_ptr<Account>> &account_list,shared_ptr<Account> acc){
      double amount {0.0};
     cout<<"How much would you like to deposit?: "<<endl;
     cin>>amount;
@@ -214,7 +217,7 @@ void deposit (vector <Account *> &account_list, Account  *acc){
     another_transaction(account_list,acc);
 }
 
-void another_transaction(vector <Account *> &account_list, Account  *acc){
+void another_transaction(vector<shared_ptr<Account>> &account_list,shared_ptr<Account> acc){
     cout<<"Would you like to perform another transaction?\n1. Yes\n2. No";
     int option_a {0};
    redemption: cout<<"\nOption: ";

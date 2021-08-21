@@ -12,7 +12,7 @@
 
 int main() {
     cout<<"\t\t\t***********************************THE BANKING APP**********************************************\n";
-    vector<Account *> accounts;
+    vector<shared_ptr<Account>> accounts;
     display_menu(accounts);
 
         
